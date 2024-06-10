@@ -1,0 +1,16 @@
+{
+  "name": "bulma-test",
+  "version": "1.0.0",
+  "description": "Mi own bulma theme",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass --watch bulma.sass:style.css --style=compressed",
+    "build:sass": "sass bulma.sass:style.css --style=compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.77.4"
+  }
+}
