@@ -1,7 +1,35 @@
 @charset "utf-8"
 /*! bulma.io v0.9.3 | MIT License | github.com/jgthms/bulma */
+@import url('https://fonts.googleapis.com/css?family=Inter:400,700')
+@import url('https://fonts.googleapis.com/css?family=Tiny5:400,700')
 
-$primary: orange
+$family-primary: "Inter", sans-serif
+$family-secondary: "Tiny5", sans-serif
+
+/*! WORKING ON DARK THEME    
+$scheme-main: #23272f
+$text: white
+
+/*! FOR ALL THEMES
+$primary: #0eff85
+$info: white
+$success: green 
+$warning: #fbc32c
+$danger: red 
+
+$link: #fbc32c
+$link-hover: darken($link, 15%)
+
+
+$size-1: 5rem 
+$size-2: 2.5rem 
+$size-3: 2rem 
+$size-4: 1.5rem 
+$size-5: 1.25rem 
+$size-6: 1rem 
+$size-7: 0.75rem
+
+
 
 
 @import "bulma/sass/utilities/_all"
@@ -12,3 +40,91 @@ $primary: orange
 @import "bulma/sass/grid/_all"
 @import "bulma/sass/helpers/_all"
 @import "bulma/sass/layout/_all"
+
+// ALL PAGES    
+.text-decoration    
+  color: $primary
+
+.border-radius
+  border-radius: 10px
+
+.hover 
+  transition: transform 0.3s ease
+  &:hover 
+    transform: scale(0.98)
+
+@keyframes pulse
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.1)
+  100%
+    transform: scale(1)
+
+// PULSATING
+.is-pulse
+  display: inline-block
+  animation: pulse 4s infinite
+
+@keyframes desplazarTexto
+  0%
+    transform: translateX(0)
+  100%
+    transform: translateX(-50%)
+
+// SHAKE EFFECT
+@keyframes shake
+  0%, 100%
+    transform: translateX(0)
+
+  10%, 30%, 50%, 70%, 90%
+    transform: translateX(-10px)
+
+  20%, 40%, 60%, 80%
+    transform: translateX(10px)
+
+// Aplicar la animación al elemento <a> al hacer hover
+a.shake-link
+  display: inline-block // Importante para que la transformación afecte al enlace
+  &:hover
+    animation: shake 0.5s
+    animation-iteration-count: infinite
+
+
+// TEXT EFFECT    
+.is-moving
+  width: 100vw
+  overflow: hidden
+  box-sizing: border-box
+  position: relative
+  height: auto // Auto para acomodar el tamaño del texto y los iconos
+  white-space: nowrap
+  color: transparent
+  -webkit-text-stroke: 2px $primary
+  text-stroke: 2px $primary
+
+  span
+    display: inline-block
+    animation: desplazarTexto 20s linear infinite
+
+    &:after
+      content: attr(data-text)
+      position: relative
+
+  &:hover
+    span
+      animation-play-state: paused
+      color: $primary
+      -webkit-text-stroke: 0px
+      text-stroke: 0px 
+
+// EFFECT FOR TEXT
+.is-outlined
+  color: transparent
+  -webkit-text-stroke: 2px $primary
+  text-stroke: 2px $primary
+  &:hover
+      color: $primary
+      -webkit-text-stroke: 0px
+      text-stroke: 0px 
+
