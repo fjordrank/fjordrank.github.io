@@ -6,19 +6,13 @@
 $family-primary: "Inter", sans-serif
 $family-secondary: "Tiny5", sans-serif
 
-/*! WORKING ON DARK THEME    
-$scheme-main: #23272f
-$text: white
+@import "bulma/sass/themes/dark"
+//@import "bulma/sass/themes/light"
 
-/*! FOR ALL THEMES
-$primary: #0eff85
+/*! DARK & LIGHT STYLES
 $info: white
 $success: green 
-$warning: #fbc32c
 $danger: red 
-
-$link: #fbc32c
-$link-hover: darken($link, 15%)
 
 
 $size-1: 5rem 
@@ -29,102 +23,55 @@ $size-5: 1.25rem
 $size-6: 1rem 
 $size-7: 0.75rem
 
-
-
-
 @import "bulma/sass/utilities/_all"
 @import "bulma/sass/base/_all"
 @import "bulma/sass/elements/_all"
-@import "bulma/sass/form/_all"
+//@import "bulma/sass/form/_all"
 @import "bulma/sass/components/_all"
 @import "bulma/sass/grid/_all"
 @import "bulma/sass/helpers/_all"
 @import "bulma/sass/layout/_all"
+@import "bulma/sass/main/_all"
 
 // ALL PAGES    
 .text-decoration    
   color: $primary
 
 .border-radius
-  border-radius: 10px
+  border-radius: 10px !important
 
 .hover 
   transition: transform 0.3s ease
   &:hover 
     transform: scale(0.98)
 
-@keyframes pulse
-  0%
-    transform: scale(1)
-  50%
-    transform: scale(1.1)
-  100%
-    transform: scale(1)
+.duotono
+  filter: grayscale(100%)
 
-// PULSATING
-.is-pulse
-  display: inline-block
-  animation: pulse 4s infinite
-
-@keyframes desplazarTexto
-  0%
-    transform: translateX(0)
-  100%
-    transform: translateX(-50%)
-
-// SHAKE EFFECT
-@keyframes shake
-  0%, 100%
-    transform: translateX(0)
-
-  10%, 30%, 50%, 70%, 90%
-    transform: translateX(-10px)
-
-  20%, 40%, 60%, 80%
-    transform: translateX(10px)
-
-// Aplicar la animación al elemento <a> al hacer hover
-a.shake-link
-  display: inline-block // Importante para que la transformación afecte al enlace
+.duotono-hover
   &:hover
-    animation: shake 0.5s
-    animation-iteration-count: infinite
+    position: relative
 
+  img
+    display: block
+    transition: filter 0.5s, mix-blend-mode 0.5s
 
-// TEXT EFFECT    
-.is-moving
-  width: 100vw
-  overflow: hidden
-  box-sizing: border-box
-  position: relative
-  height: auto // Auto para acomodar el tamaño del texto y los iconos
-  white-space: nowrap
-  color: transparent
-  -webkit-text-stroke: 2px $primary
-  text-stroke: 2px $primary
+  &:hover img
+    filter: grayscale(100%)
+    mix-blend-mode: multiply
 
-  span
-    display: inline-block
-    animation: desplazarTexto 20s linear infinite
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: $primary
+    mix-blend-mode: screen
+    pointer-events: none
+    opacity: 0
+    transition: opacity 0.5s
 
-    &:after
-      content: attr(data-text)
-      position: relative
-
-  &:hover
-    span
-      animation-play-state: paused
-      color: $primary
-      -webkit-text-stroke: 0px
-      text-stroke: 0px 
-
-// EFFECT FOR TEXT
-.is-outlined
-  color: transparent
-  -webkit-text-stroke: 2px $primary
-  text-stroke: 2px $primary
-  &:hover
-      color: $primary
-      -webkit-text-stroke: 0px
-      text-stroke: 0px 
-
+  &:hover::before
+    opacity: 1
